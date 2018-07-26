@@ -16,6 +16,7 @@ The solution is multi-sig, or multiple signatures. This was built into Bitcoin f
 
 ```python
 from helper import hash160
+from IPython.display import HTML
 
 hex_redeem_script = '5221022626e955ea6ea6d98850c994f9107b036b1334f18ca8830bfff1295d21cfdb702103b287eaf122eea69030a0e9feed096bed8045c8b98bec453e1ffac7fbdbd4bb7152ae'
 
@@ -57,9 +58,6 @@ The key here is that upon execution of the exact sequence
 `<redeemScript> OP_HASH160 <hash> OP_EQUAL`
 
 the redeemScript is immediately put on the stack if the result is true. In other words, if we reveal a script that hashes to the hash in the scriptPubKey, that redeemScript acts like the scriptPubKey instead. We are essentially hashing the script that locks the funds and putting that into the blockchain instead of the script itself.
-
-This is how it looks visually:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/aR-cORfO7zg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 This is a bit hacky and there's a lot of special-cased code in Bitcoin to handle this. Why didn't the core devs do something a lot less hacky and more intuitive? Well, it turns out that there was indeed another proposal BIPXX which used something called OP_EVAL, which would have been a lot more elegant. A script like this would have sufficed:
 

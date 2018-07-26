@@ -27,7 +27,7 @@ h160 = hash160(redeem_script)
 print(h160.hex())
 ```
 
-### Pay to Script Hash [TODO: INSERT VIDEOS]
+### Pay to Script Hash
 
 Pay to Script Hash is a very general solution to the long address problem. It's possible to have a more complicated script than a multisig and there's no real way to compress them into addresses, either. To make this work, we have to be able to take the hash of a bunch of script elements and then somehow reveal the pre-image script elements later. This is at the heart of the design around pay-to-script-hash.
 
@@ -60,9 +60,6 @@ The key here is that upon execution of the exact sequence
 `<redeemScript> OP_HASH160 <hash> OP_EQUAL`
 
 the redeemScript is immediately put on the stack if the result is true. In other words, if we reveal a script that hashes to the hash in the scriptPubKey, that redeemScript acts like the scriptPubKey instead. We are essentially hashing the script that locks the funds and putting that into the blockchain instead of the script itself.
-
-This is how it looks visually:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/aR-cORfO7zg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 This is a bit hacky and there's a lot of special-cased code in Bitcoin to handle this. Why didn't the core devs do something a lot less hacky and more intuitive? Well, it turns out that there was indeed another proposal BIPXX which used something called OP_EVAL, which would have been a lot more elegant. A script like this would have sufficed:
 
