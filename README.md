@@ -24,7 +24,7 @@ hex_redeem_script = '5221022626e955ea6ea6d98850c994f9107b036b1334f18ca8830bfff12
 # hex() to display
 ```
 
-### Pay to Script Hash [TODO: INSERT VIDEOS]
+### Pay to Script Hash
 
 Pay to Script Hash is a very general solution to the long address problem. It's possible to have a more complicated script than a multisig and there's no real way to compress them into addresses, either. To make this work, we have to be able to take the hash of a bunch of script elements and then somehow reveal the pre-image script elements later. This is at the heart of the design around pay-to-script-hash.
 
@@ -60,6 +60,7 @@ the redeemScript is immediately put on the stack if the result is true. In other
 
 This is how it looks visually:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/aR-cORfO7zg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 
 This is a bit hacky and there's a lot of special-cased code in Bitcoin to handle this. Why didn't the core devs do something a lot less hacky and more intuitive? Well, it turns out that there was indeed another proposal BIPXX which used something called OP_EVAL, which would have been a lot more elegant. A script like this would have sufficed:
 
