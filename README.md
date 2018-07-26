@@ -61,7 +61,6 @@ the redeemScript is immediately put on the stack if the result is true. In other
 This is how it looks visually:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/aR-cORfO7zg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-
 This is a bit hacky and there's a lot of special-cased code in Bitcoin to handle this. Why didn't the core devs do something a lot less hacky and more intuitive? Well, it turns out that there was indeed another proposal BIPXX which used something called OP_EVAL, which would have been a lot more elegant. A script like this would have sufficed:
 
 `OP_DUP OP_HASH160 <hash> OP_EQUAL OP_EVAL`
